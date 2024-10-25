@@ -1,0 +1,121 @@
+<style type="text/css"> 
+    .center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      width: 100%;
+    }
+    img {
+      width: 80%;
+    }
+
+     /* Tooltip styling */
+     .tooltip {
+      display: none;
+      position: absolute;
+      background-color: #3e4444;
+      color: white;
+      padding: 4px;
+      border-radius: 5px;
+      width: 15%;
+      text-align: center;
+      z-index: 10;
+    }
+    .tooltip-image {
+      width: 100%;
+      height: auto;
+      margin-bottom: 5px;
+    }
+    .tooltip p {
+      margin: 0;
+      font-weight: bold;
+    }        
+    body {
+  font-family: Arial, sans-serif;
+}        
+
+
+    </style>
+    
+    <body>
+    
+        <h1 style="background-color:#00A36C;padding: 30px;text-align: center">Genes From Space - BON in a box monitoring tool</h1>
+
+        <div id="tooltip" class="tooltip">
+            <img src="" alt="Species Image" id="tooltip-image" class="tooltip-image">
+            <p id="tooltip-name">Species Name</p>
+        </div>
+    
+        <img src="MapChart_Map.png" alt="map" class="center" usemap="#workmap">   
+        <map name="workmap">
+          <area shape="poly"coords="1480,1634, 1678,1733, 1573,1848, 1133,1524" alt="Computer" href="casestudy1.html"onmouseover="showTooltip('button1.png')" onmousemove="moveTooltip(event)" onmouseout="hideTooltip()">
+          <area shape="poly"coords="1848,2184, 1965,2121, 2054,2154, 2079,2336, 2047,2426, 1940,2360" alt="Computer" href="casestudy7.html" onmouseover="showTooltip('button7.png')" onmousemove="moveTooltip(event)" onmouseout="hideTooltip()">  
+          <area shape="poly"coords="3087,1958,3065,1987,3122,2027,3213,2016,3219,1941,3122,1930" alt="Computer" href="casestudy2.html" onmouseover="showTooltip('button2.png')" onmousemove="moveTooltip(event)" onmouseout="hideTooltip()">  
+          <area shape="poly"coords="5518,1507,5564,1456,5655,1427,5695,1325,5724,1256,5792,1290,5735,1376,5712,1456,5621,1496,5530,1547" alt="Computer" href="casestudy4.html" onmouseover="showTooltip('button4.png')" onmousemove="moveTooltip(event)" onmouseout="hideTooltip()">  
+          <area shape="rect"coords="3709,1339,4052,1447" alt="Computer" href="casestudy6.html" onmouseover="showTooltip('button6.png')" onmousemove="moveTooltip(event)" onmouseout="hideTooltip()"> 
+          <area shape="rect"coords="3361,1205,3453,1250" alt="Computer" href="casestudy5.html" onmouseover="showTooltip('button5.png')" onmousemove="moveTooltip(event)" onmouseout="hideTooltip()"> 
+          <area shape="rect"coords="5712,2113,5969,2318" alt="Computer" href="casestudy3.html" onmouseover="showTooltip('button3.png')" onmousemove="moveTooltip(event)" onmouseout="hideTooltip()">
+    
+        </map> 
+    
+    
+        <script>
+          window.onload = function() {
+            const image = document.querySelector('img[usemap="#workmap"]');
+            const originalWidth = 6460; // Original image width
+            const mapAreas = document.querySelectorAll('area');
+        
+            function resizeMap() {
+              const scaleFactor = image.clientWidth / originalWidth;
+        
+              mapAreas.forEach(function(area) {
+                const coords = area.getAttribute('data-original-coords').split(',');
+                const scaledCoords = coords.map(coord => Math.round(coord * scaleFactor));
+                area.setAttribute('coords', scaledCoords.join(','));
+              });
+            }
+        
+            // Store the original coordinates in a custom data attribute
+            mapAreas.forEach(function(area) {
+              area.setAttribute('data-original-coords', area.getAttribute('coords'));
+            });
+        
+            // Call the function on window resize and page load
+            window.addEventListener('resize', resizeMap);
+            resizeMap();
+          };
+          
+    
+    
+
+         // Function to show tooltip with image and species name
+         function showTooltip(imageUrl, speciesName) {
+            const tooltip = document.getElementById('tooltip');
+            const tooltipImage = document.getElementById('tooltip-image');
+            const tooltipName = document.getElementById('tooltip-name');
+        
+            // Update tooltip content
+            tooltipImage.src = imageUrl;
+            tooltipName.textContent = speciesName;
+        
+            // Show the tooltip
+            tooltip.style.display = 'block';
+        }
+
+        // Function to move tooltip to cursor position
+        function moveTooltip(event) {
+            const tooltip = document.getElementById('tooltip');
+            const xOffset = -100;  // Horizontal offset from the cursor
+            const yOffset = 20;  // Vertical offset from the cursor
+
+            tooltip.style.left = event.pageX + xOffset + 'px';
+            tooltip.style.top = event.pageY + yOffset + 'px';
+        }
+
+        // Function to hide tooltip
+        function hideTooltip() {
+            const tooltip = document.getElementById('tooltip');
+            tooltip.style.display = 'none';
+        }
+        </script>
+            
