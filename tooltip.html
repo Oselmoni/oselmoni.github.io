@@ -1,14 +1,31 @@
-<style type="text/css"> 
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Genes From Space - Monitoring Tool</title>
+  <style><style type="text/css"> 
+    body {
+      font-family: Arial, sans-serif;
+
+    }
+      body {
+      font-family: Arial, sans-serif;
+    }     
+    h1 {
+      text-align: center;
+      background-color:#00A36C;
+      
+      color: white;
+      padding: 20px;
+      margin-bottom: 10px;
+
+    }
     .center {
       display: block;
       margin-left: auto;
       margin-right: auto;
       width: 100%;
     }
-    img {
-      width: 80%;
-    }
-
      /* Tooltip styling */
      .tooltip {
       display: none;
@@ -30,17 +47,15 @@
       margin: 0;
       font-weight: bold;
     }        
-    body {
-  font-family: Arial, sans-serif;
-}        
+   
 
 
-    </style>
-    
+  </style>
+</head>
     <body>
     
-        <h1 style="background-color:#00A36C;padding: 30px;text-align: center">Genes From Space - BON in a box monitoring tool</h1>
-
+        <h1>Genes From Space <br>  <span style="font-size: 20px">BON in a box monitoring tool</span></h1>
+        <p style="text-align: center;">The Genes From Space monitoring tool can be used to monitor habitat change for specific Species and Countries. For more information check the <a href="https://teams.issibern.ch/genesfromspace/monitoring-tool/"> documentation</a>. The Examples bellow where created by the Genes for space team to demonstrate the capabilities of the tool. Click on an image to see the corresponding output of the tool. </p>
         <div id="tooltip" class="tooltip">
             <img src="" alt="Species Image" id="tooltip-image" class="tooltip-image">
             <p id="tooltip-name">Species Name</p>
